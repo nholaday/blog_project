@@ -1,4 +1,4 @@
-Blog site made using Django!
+### Blog site made using Django!
 
 Features:
 * Post Drafting and Publishing
