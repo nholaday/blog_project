@@ -5,4 +5,4 @@ Features:
 * Comments
 * User Login Page
 
-![alt text](https://github.com/nholaday/blog_project/blob/master/blogapp/static/media/image.jpg?raw=true)
+![alt text](https://raw.githubusercontent.com/nholaday/blog_project/master/blogapp/static/media/post_list_screenshot.png)
