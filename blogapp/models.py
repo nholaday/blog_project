@@ -16,11 +16,11 @@ class Post(models.Model):
     published_at = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
-        self.published_date = timezone.now()
+        self.published_at = timezone.now()
         self.save()
 
     def approve_comments(self):
-        return self.comments.filter(approved=True)
+        return Comment.objects.filter(post=self, approved=True)
 
     # special django function, needs exact name
     def get_absolute_url(self):

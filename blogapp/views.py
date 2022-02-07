@@ -19,7 +19,7 @@ class PostListView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(
-            published_at=timezone.now()
+            published_at__isnull=False
         ).order_by('-published_at')
 
 class PostDetailView(DetailView):
@@ -28,17 +28,15 @@ class PostDetailView(DetailView):
 # restrict access to view like @access_required with a mixin
 class PostCreateView(CreateView, LoginRequiredMixin):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_detail.html'
+    redirect_field_name = 'blogapp/post_detail.html'
     form_class = PostForm
     model = Post
-    fields = ['title', 'text']
 
 class PostUpdateView(UpdateView, LoginRequiredMixin):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_detail.html'
+    redirect_field_name = 'blogapp/post_detail.html'
     form_class = PostForm
     model = Post
-    fields = ['title', 'text']
 
 class PostDeleteView(DeleteView, LoginRequiredMixin):
     model = Post
@@ -46,8 +44,9 @@ class PostDeleteView(DeleteView, LoginRequiredMixin):
 
 class DraftListView(ListView, LoginRequiredMixin):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_list.html'
+    redirect_field_name = 'blogapp/post_list.html'
     model = Post
+    template_name = 'blogapp/draft_list.html'
 
     def get_queryset(self):
         return Post.objects.filter(
@@ -75,7 +74,7 @@ def add_comment_to_post(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'blog/comment_form.html', {'form':form})
+    return render(request, 'blogapp/comment_form.html', {'form':form})
 
 @login_required
 def comment_approve(request, pk):

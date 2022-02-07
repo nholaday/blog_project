@@ -38,9 +38,33 @@
               <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'post_create' %}">New Post</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              <span class="navbar-text">
+                  <a>Welcome: {{user.username}}</a>
+              </span>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
         </div>
       </div>
     </nav>
-    {% block content %}{% endblock %}
+
+    <div class="content container">
+      {% block content %}{% endblock %}
+    </div>
+
   </body>
 </html>
