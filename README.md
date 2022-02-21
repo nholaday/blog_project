@@ -1,6 +1,6 @@
 ## Blog site made using Django!
 
-###To Run:
+### To Run:
 1. Create virtual environment
 ```
 cd blog_project/
@@ -22,7 +22,7 @@ python3 manage.py runserver
 5. Navigate to localhost:8000/ in your browser
 ```
 
-###Features:
+### Features:
 * Post Drafting and Publishing
 * Comments
 * User Login Page
