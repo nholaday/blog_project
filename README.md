@@ -20,6 +20,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 5. Navigate to localhost:8000/ in your browser
+```
 
 ###Features:
 * Post Drafting and Publishing
